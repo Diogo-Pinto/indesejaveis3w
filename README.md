@@ -1,6 +1,6 @@
-# Detecção de Eventos Indesejáveis em Poços de Petróleo Offshore: 3W Dataset (Petrobras)
+# Detecção de Eventos Indesejáveis em Poços de Petróleo Offshore — 3W Dataset (Petrobras)
 
-MVP de *Machine Learning* para **classificação binária de eventos indesejáveis** em poços de petróleo offshore, a partir de dados reais de sensoriamento do **3W Dataset** da Petrobras. Todo o pipeline, do download dos dados à avaliação dos modelos, é executável de ponta a ponta (concebido para rodar no Google Colab sem upload manual, autenticação ou chaves de acesso).
+MVP de *Machine Learning* para **classificação binária de eventos indesejáveis** em poços de petróleo offshore, a partir de dados reais de sensoriamento do **3W Dataset** da Petrobras. Todo o pipeline — do download dos dados à avaliação dos modelos — é executável de ponta a ponta (concebido para rodar no Google Colab sem upload manual, autenticação ou chaves de acesso).
 
 📓 Notebook: [`indesejaveis.ipynb`](indesejaveis.ipynb)
 
@@ -25,7 +25,7 @@ Em poços offshore, sensores monitoram continuamente pressão, temperatura, vaz�
 - UCI ML Repository: https://archive.ics.uci.edu/dataset/540/3w+dataset
 - **Licença:** Creative Commons Attribution 4.0 (CC BY 4.0)
 
-Cada instância é um arquivo Parquet; os subdiretórios de `dataset` são nomeados pelo código do tipo de evento (`0` = normal). O notebook usa a **API pública do GitHub** para baixar seletivamente um número reduzido de instâncias, sem transferência manual.
+Cada instância é um arquivo Parquet; os subdiretórios de `dataset` são nomeados pelo código do tipo de evento (`0` = normal). Um subconjunto das instâncias está **versionado neste próprio repositório** (pasta [`dataset/`](dataset/)) e é lido pelo notebook diretamente via **URL raw do GitHub** (`raw.githubusercontent.com/Diogo-Pinto/indesejaveis3w/main/dataset/...`), sem API, autenticação ou transferência manual.
 
 - **Evento estudado:** código **2** — *fechamento espúrio da DHSV* (válvula de segurança de subsuperfície), que enseja perda de produção.
 - **Amostra:** 15 instâncias reais de evento + 15 instâncias normais.
@@ -39,6 +39,7 @@ Cada instância é um arquivo Parquet; os subdiretórios de `dataset` são nomea
 - **Desbalanceamento:** ~84% normal / ~16% anomalia por observação.
 
 ### Preparação dos dados
+- **Fonte dos dados no código:** o notebook lê os Parquet em `dataset/0/` (normal) e `dataset/2/` (evento) via URL raw deste repositório, com cache local para reexecuções.
 - **Janelamento:** séries segmentadas em janelas fixas de `WINDOW = 300` observações (~5 min a 1 Hz).
 - **Extração de atributos:** para cada sensor e janela, 4 estatísticas — média, desvio-padrão, mínimo e máximo.
 - **Rótulo da janela:** anomalia quando ≥ 50% das observações são anômalas.
@@ -98,7 +99,7 @@ O notebook foi concebido para rodar no **Google Colab** sem configuração manua
 pip install numpy pandas matplotlib scikit-learn pyarrow
 ```
 
-Abra e execute `indesejaveis.ipynb` de cima para baixo. É necessário **acesso à internet** (o notebook baixa os dados via API pública do GitHub) — os arquivos ficam em cache local para reexecuções.
+Abra e execute `indesejaveis.ipynb` de cima para baixo. É necessário **acesso à internet** (o notebook lê os dados via URL raw deste repositório) — os arquivos ficam em cache local para reexecuções.
 
 ---
 

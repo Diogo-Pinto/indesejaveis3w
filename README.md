@@ -1,6 +1,6 @@
-# Detecção de Eventos Indesejáveis em Poços de Petróleo Offshore — 3W Dataset (Petrobras)
+# Detecção de Eventos Indesejáveis em Poços de Petróleo Offshore: 3W Dataset (Petrobras)
 
-MVP de *Machine Learning* para **classificação binária de eventos indesejáveis** em poços de petróleo offshore, a partir de dados reais de sensoriamento do **3W Dataset** da Petrobras. Todo o pipeline — do download dos dados à avaliação dos modelos — é executável de ponta a ponta (concebido para rodar no Google Colab sem upload manual, autenticação ou chaves de acesso).
+MVP de *Machine Learning* para **classificação binária de eventos indesejáveis** em poços de petróleo offshore, a partir de dados reais de sensoriamento do **3W Dataset** da Petrobras. Todo o pipeline, do download dos dados à avaliação dos modelos, é executável de ponta a ponta (concebido para rodar no Google Colab sem upload manual, autenticação ou chaves de acesso).
 
 📓 Notebook: [`indesejaveis.ipynb`](indesejaveis.ipynb)
 
